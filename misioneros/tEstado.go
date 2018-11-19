@@ -60,23 +60,35 @@ func (e *tEstado) esObjetivo() bool {
 func (e *tEstado) esValido(op int) bool {
 	valido := false
 	switch op {
-	case ci, cci:
-		valido = e.derecha.c > 0 && (e.izquierda.c+op <= e.izquierda.m || e.derecha.c-op <= e.derecha.m) && !e.barca
+	case ci:
+		valido = e.derecha.c > 0 && (e.izquierda.c+1 <= e.izquierda.m || e.izquierda.m == 0) && !e.barca
 		break
-	case mi, mmi:
-		valido = e.derecha.m > 0 && (e.izquierda.c <= e.izquierda.m+(op-2) || e.derecha.c <= e.derecha.m-(op-2)) && !e.barca
+	case cci:
+		valido = e.derecha.c > 1 && (e.izquierda.c+2 <= e.izquierda.m || e.izquierda.m == 0) && !e.barca
+		break
+	case mi:
+		valido = e.derecha.m > 0 && e.izquierda.c <= e.izquierda.m+1 && (e.derecha.c <= e.derecha.m-1 || e.derecha.m == 1) && !e.barca
+		break
+	case mmi:
+		valido = e.derecha.m > 1 && e.izquierda.c <= e.izquierda.m+2 && (e.derecha.c <= e.derecha.m-2 || e.derecha.m == 2) && !e.barca
 		break
 	case mci:
-		valido = e.derecha.m > 0 && e.derecha.c > 0 && e.izquierda.c-1 <= e.izquierda.m-1 && !e.barca
+		valido = e.derecha.m > 0 && e.derecha.c > 0 && e.izquierda.c+1 <= e.izquierda.m+1 && e.derecha.c-1 <= e.derecha.m-1 && !e.barca
 		break
-	case cd, ccd:
-		valido = e.izquierda.c > 0 && (e.derecha.c+(op-5) <= e.derecha.m || e.izquierda.c-(op-5) <= e.izquierda.m) && e.barca
+	case cd:
+		valido = e.izquierda.c > 0 && (e.derecha.c+1 <= e.derecha.m || e.derecha.m == 0) && e.barca
 		break
-	case md, mmd:
-		valido = e.izquierda.m > 0 && (e.derecha.c <= e.derecha.m+(op-7) || e.izquierda.c <= e.izquierda.m-(op-7)) && e.barca
+	case ccd:
+		valido = e.izquierda.c > 1 && (e.derecha.c+2 <= e.derecha.m || e.derecha.m == 0) && e.barca
+		break
+	case md:
+		valido = e.izquierda.m > 0 && e.derecha.c <= e.derecha.m+1 && (e.izquierda.c <= e.izquierda.m-1 || e.izquierda.m == 1) && e.barca
+		break
+	case mmd:
+		valido = e.izquierda.m > 1 && e.derecha.c <= e.derecha.m+2 && (e.izquierda.c <= e.izquierda.m-2 || e.izquierda.m == 2) && e.barca
 		break
 	case mcd:
-		valido = e.izquierda.m > 0 && e.izquierda.c > 0 && e.derecha.c+1 <= e.derecha.m+1 && e.barca
+		valido = e.izquierda.m > 0 && e.izquierda.c > 0 && e.derecha.c+1 <= e.derecha.m+1 && e.izquierda.c-1 <= e.izquierda.m-1 && e.barca
 		break
 	}
 	return valido

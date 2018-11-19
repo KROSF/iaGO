@@ -21,8 +21,8 @@ type TEstado struct {
 	col    [dimension * dimension]int
 }
 
-var puzzleInicial = [][]int{{1, 3, 7}, {2, 8, 5}, {4, 6, 0}}
-var puzzleFinal = [][]int{{0, 1, 3}, {4, 2, 7}, {6, 5, 8}}
+var puzzleInicial = [][]int{{0, 2, 3}, {1, 8, 4}, {7, 6, 5}}
+var puzzleFinal = [][]int{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}}
 
 //CrearEstado devulve un TEstado creado desde un slice
 func CrearEstado(puzzle [][]int) *TEstado {
