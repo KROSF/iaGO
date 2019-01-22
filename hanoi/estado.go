@@ -181,5 +181,11 @@ func dispOperador(op int) {
 }
 
 func (e *tEstado) heuristica() int {
-	return 1
+	piezas := 3
+	for i := 0; i < torres; i++ {
+		if e.towers[c][i] == i+1 {
+			piezas--
+		}
+	}
+	return piezas
 }
