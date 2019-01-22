@@ -23,7 +23,6 @@ func (n *tNodo) dispCamino() {
 		n.padre.dispCamino()
 		dispOperador(n.operador)
 		n.estado.dispEstado()
-		fmt.Printf("Heuristica: %d", n.heuristica)
 		fmt.Println()
 	}
 }
