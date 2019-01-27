@@ -7,7 +7,7 @@ import (
 
 func main() {
 	start := time.Now()
-	busquedaInformada(aestrella)
+	busquedaInformada(vorax)
 	fmt.Println("Busqueda en A*: ", time.Since(start))
 	//start = time.Now()
 	//busquedaAnchura()
